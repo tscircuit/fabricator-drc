@@ -1,0 +1,30 @@
+{
+  "name": "@tscircuit/fabricator-drc",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Fabricator-specific Circuit JSON design rule checks",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tscircuit/fabricator-drc"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "build": "tsup lib/index.ts --format esm --dts",
+    "format:check": "biome format ."
+  },
+  "dependencies": {
+    "circuit-json": "^0.0.489",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/bun": "^1.2.16",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  }
+}
