@@ -15,7 +15,9 @@
     "test": "bun test",
     "typecheck": "tsc --noEmit",
     "build": "tsup lib/index.ts --format esm --dts",
-    "format:check": "biome format ."
+    "format:check": "biome format .",
+    "prepare": "bun run build",
+    "prepack": "bun run build"
   },
   "dependencies": {
     "circuit-json": "^0.0.489",
@@ -26,5 +28,14 @@
     "@types/bun": "^1.2.16",
     "tsup": "^8.5.0",
     "typescript": "^5.9.3"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
