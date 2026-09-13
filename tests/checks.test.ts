@@ -31,13 +31,11 @@ test("all four JLCPCB presets warn only for holes strictly below 0.3 mm", () => 
       circuitJson,
       fabricatorPreset,
       pcbBoardId: "pcb_board_0",
-      subcircuitId: "subcircuit_0",
     })
     expect(warnings).toHaveLength(1)
     expect(warnings[0].pcb_via_ids).toEqual(["pcb_via_0", "pcb_via_1"])
     expect(warnings[0].fabricator_preset).toBe(fabricatorPreset)
     expect(warnings[0].pcb_board_id).toBe("pcb_board_0")
-    expect(warnings[0].subcircuit_id).toBe("subcircuit_0")
     expect(any_circuit_element.parse(warnings[0])).toEqual(warnings[0])
     expect(warnings[0].message).toContain("at least 0.3 mm")
   }
@@ -54,7 +52,6 @@ test("no warning for an empty board, sufficient holes, or unsupported presets", 
         circuitJson,
         fabricatorPreset: "jlcpcb_economy",
         pcbBoardId: "pcb_board_0",
-        subcircuitId: undefined,
       }),
     ).toEqual([])
   }
@@ -69,7 +66,6 @@ test("no warning for an empty board, sufficient holes, or unsupported presets", 
         circuitJson: [via(0.2, "pcb_via_0")],
         fabricatorPreset,
         pcbBoardId: "pcb_board_0",
-        subcircuitId: undefined,
       }),
     ).toEqual([])
   }

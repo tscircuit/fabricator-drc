@@ -10,7 +10,6 @@ export interface FabricatorDrcParams {
   circuitJson: AnyCircuitElement[]
   fabricatorPreset: string
   pcbBoardId: PcbBoard["pcb_board_id"]
-  subcircuitId: PcbBoard["subcircuit_id"]
 }
 
 /** Dated presets keep fixed rules; unversioned names select the current rules. */
@@ -38,7 +37,6 @@ export function runDrcChecks({
   circuitJson,
   fabricatorPreset,
   pcbBoardId,
-  subcircuitId,
 }: FabricatorDrcParams): PcbFabricatorExtraChargeWarning[] {
   const preset = resolvePreset(fabricatorPreset)
   if (!preset) return []
@@ -53,7 +51,6 @@ export function runDrcChecks({
       type: "pcb_fabricator_extra_charge_warning",
       fabricator_preset: fabricatorPreset,
       pcb_board_id: pcbBoardId,
-      subcircuit_id: subcircuitId,
       pcb_via_ids: smallVias.map((via) => via.pcb_via_id),
       message: `${fabricatorPreset}: ${smallVias.length} via(s) have a hole diameter below ${threshold} mm and incur an extra fabrication charge. Use a hole diameter of at least ${threshold} mm to avoid this charge.`,
     }),

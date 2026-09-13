@@ -35,7 +35,7 @@ preset before changing rules. Unknown presets currently return no diagnostics.
 
 ## Provider contract
 
-`runDrcChecks({ circuitJson, fabricatorPreset, pcbBoardId, subcircuitId })`
+`runDrcChecks({ circuitJson, fabricatorPreset, pcbBoardId })`
 returns Circuit JSON diagnostic records. Core supplies the selected board's
 subtree after routing; callers using the function directly must supply that
 same scope. Circuit JSON positions and distances use millimeters in board world
