@@ -1,6 +1,6 @@
 {
   "name": "@tscircuit/fabricator-drc",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "Fabricator-specific Circuit JSON design rule checks",
   "license": "MIT",
@@ -10,7 +10,9 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "bun test",
     "typecheck": "tsc --noEmit",
