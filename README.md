@@ -17,9 +17,8 @@ circuit.add(
 await circuit.renderUntilSettled()
 ```
 
-Requires the fabricator engine integration in core and props. `circuit-json`
-is a peer dependency (`>=0.0.489 <0.1.0`): install the same version used by your
-application so the provider and caller share the Circuit JSON element types.
+Requires the fabricator engine integration in core and props. The package is
+not yet published to npm.
 
 ## Initial check
 
