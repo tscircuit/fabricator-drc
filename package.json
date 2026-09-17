@@ -10,9 +10,7 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "test": "bun test",
     "typecheck": "tsc --noEmit",
@@ -22,12 +20,15 @@
     "prepack": "bun run build"
   },
   "dependencies": {
-    "circuit-json": "^0.0.489",
     "zod": "^3.25.76"
+  },
+  "peerDependencies": {
+    "circuit-json": ">=0.0.489 <0.1.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@types/bun": "^1.2.16",
+    "circuit-json": "0.0.493",
     "tsup": "^8.5.0",
     "typescript": "^5.9.3"
   },

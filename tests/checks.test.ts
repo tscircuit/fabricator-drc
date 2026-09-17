@@ -1,5 +1,9 @@
 import { expect, test } from "bun:test"
-import { any_circuit_element, pcb_via } from "circuit-json"
+import {
+  any_circuit_element,
+  pcb_via,
+  type AnyCircuitElement,
+} from "circuit-json"
 import { runDrcChecks } from "../lib"
 
 const via = (holeDiameter: number, id: string) =>
@@ -69,4 +73,20 @@ test("no warning for an empty board, sufficient holes, or unsupported presets", 
       }),
     ).toEqual([])
   }
+})
+
+test("newer Circuit JSON records coexist with via checks", () => {
+  const circuitJson: AnyCircuitElement[] = [
+    { type: "source_bus", source_bus_id: "source_bus_0", source_trace_ids: [] },
+    via(0.25, "pcb_via_0"),
+  ]
+  const original = structuredClone(circuitJson)
+  const warnings = runDrcChecks({
+    circuitJson,
+    fabricatorPreset: "jlcpcb_economy",
+    pcbBoardId: "pcb_board_0",
+  })
+  expect(warnings).toHaveLength(1)
+  expect(warnings[0].pcb_via_ids).toEqual(["pcb_via_0"])
+  expect(circuitJson).toEqual(original)
 })
